@@ -6,8 +6,10 @@ Rag Demo built for CSEN166 AI presentation. Vector database is hosted via Pineco
 
 ### Sample answers:
 **Question:** How much did Barbie bring in in box office?
+
 **RAG:** 
 Barbie brought in $1,441,724,962 in box office revenue.
+
 **No RAG:** 
 I'm not exactly sure about the box office revenue of a specific Barbie movie, as there have been several films featuring the character over the years. However, I can suggest that you might be referring to the 2023 live-action film "Barbie" starring Margot Robbie.
 
