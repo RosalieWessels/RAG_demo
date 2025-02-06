@@ -15,7 +15,7 @@ JINA_API_KEY = os.getenv("JINA_API_KEY")
 
 
 # Generate embeddings
-user_query = "How much did Star Wars bring in in box office?"
+user_query = "How much did Barbie bring in in box office?"
 
 API_URL = "https://api.jina.ai/v1/embeddings"
 
@@ -25,7 +25,7 @@ headers = {
 }
 
 data = {
-    "model": "jina-clip-v2",  # Specify the embedding model
+    "model": "jina-clip-v2",  
     "dimensions" : 1024,
     "input": [user_query]
 }
@@ -47,7 +47,7 @@ result = index.query(
 
 print(result)
 
-# Extract relevant details
+#Parse
 parsed_movies = []
 for match in result.get("matches", []):
     metadata = match.get("metadata", {})
@@ -56,11 +56,11 @@ for match in result.get("matches", []):
         "year": int(metadata.get("year", 0)),
         "summary": metadata.get("summary", "No summary available."),
         "genre": metadata.get("genre", "Unknown Genre"),
-        "box_office": f"${int(metadata.get('box-office', 0)):,}",  # Formatting as currency
-        "score": round(match.get("score", 0), 4)  # Round similarity score
+        "box_office": f"${int(metadata.get('box-office', 0)):,}",  
+        "score": round(match.get("score", 0), 4) 
     })
 
-# Pretty-print extracted results
+#Print results
 print(json.dumps(parsed_movies, indent=4))
 context = json.dumps(parsed_movies, indent=4)
 
@@ -87,5 +87,5 @@ response = client.chat.completions.create(
     ]
 )
 
-# Print the response
+# Print response
 print(response.choices[0].message.content)
